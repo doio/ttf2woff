@@ -1,0 +1,19 @@
+diff -u --minimal zopfli-src/src/zopfli/deflate.c zopfli/deflate.c
+--- zopfli-src/src/zopfli/deflate.c	2016-05-19 18:17:23.000000000 +0200
++++ zopfli/deflate.c	2016-05-19 18:28:58.000000000 +0200
+@@ -84,6 +84,7 @@
+ d_lengths: the 32 lengths of the distance codes.
+ */
+ static void PatchDistanceCodesForBuggyDecoders(unsigned* d_lengths) {
++#if 0
+   int num_dist_codes = 0; /* Amount of non-zero distance codes */
+   int i;
+   for (i = 0; i < 30 /* Ignore the two unused codes from the spec */; i++) {
+@@ -96,6 +97,7 @@
+   } else if (num_dist_codes == 1) {
+     d_lengths[d_lengths[0] ? 1 : 0] = 1;
+   }
++#endif
+ }
+ 
+ /*
